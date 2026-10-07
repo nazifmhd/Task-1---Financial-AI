@@ -8,8 +8,8 @@ Keeping the notebook as code makes it reviewable in diffs; execute it with
 """
 import nbformat as nbf
 
-GITHUB_USER = "MohamedNazif"           # update if your GitHub handle differs
-REPO = "CDAZZDEV-MLE-MohamedNazif"
+GITHUB_USER = "nazifmhd"           # update if your GitHub handle differs
+REPO = "Task-1---Financial-AI"
 NB_PATH = "task1_financial/task1_equity_research.ipynb"
 COLAB = f"https://colab.research.google.com/github/{GITHUB_USER}/{REPO}/blob/main/{NB_PATH}"
 

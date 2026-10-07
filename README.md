@@ -4,7 +4,7 @@ Senior Machine Learning Engineer technical assessment for Ceylon Dazzling Dev Ho
 
 | Task | Folder | Status | Notebook |
 |---|---|---|---|
-| 1 — Financial AI: LLM-powered equity research assistant | [`task1_financial/`](task1_financial/) | Complete (1A, 1B, bonus report) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MohamedNazif/CDAZZDEV-MLE-MohamedNazif/blob/main/task1_financial/task1_equity_research.ipynb) |
+| 1 — Financial AI: LLM-powered equity research assistant | [`task1_financial/`](task1_financial/) | Complete (1A, 1B, bonus report) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task1_financial/task1_equity_research.ipynb) |
 | 2 — Generative AI: domain fine-tuning | `task2_genai/` | — | — |
 | 3 — Agentic workflows: multi-agent research | `task3_agentic/` | — | — |
 

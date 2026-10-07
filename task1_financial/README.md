@@ -1,6 +1,6 @@
 # Task 1 — LLM-Powered Equity Research Assistant
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MohamedNazif/CDAZZDEV-MLE-MohamedNazif/blob/main/task1_financial/task1_equity_research.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task1_financial/task1_equity_research.ipynb)
 
 **Executed notebook (outputs visible):** [`task1_equity_research.ipynb`](task1_equity_research.ipynb)
 **Sample brief:** [`outputs/brief.html`](outputs/brief.html) · [`outputs/brief.md`](outputs/brief.md)
