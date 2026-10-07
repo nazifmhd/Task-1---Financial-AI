@@ -1,0 +1,19 @@
+{
+  "signal": "Buy",
+  "conviction": "medium",
+  "justification": "The price is firmly above both the 50\u2011day and 200\u2011day SMAs, confirming a sustained bullish regime, while the MACD line sits above its signal with a rising histogram, reinforcing upward momentum. RSI has climbed to 67, indicating strong but not yet exhausted buying pressure, and the positive news sentiment adds fundamental support. However, the stock is trading near the upper Bollinger band and just 1.7% below its 52\u2011week high, suggesting a short\u2011term overextension, and volume is slightly below its 20\u2011day average, hinting at waning participation. Overall, the bullish trend and momentum outweigh these near\u2011term cautions, supporting a buy recommendation for the next 1\u20113 months.",
+  "key_drivers": [
+    "price above SMA\u201150/200 confirming bullish trend",
+    "MACD histogram rising with bullish crossover supporting momentum",
+    "RSI climbing yet below overbought within uptrend",
+    "Bollinger %B near upper band indicating potential short\u2011term pullback"
+  ],
+  "conflicting_signals": [
+    "price hugging upper Bollinger band",
+    "RSI approaching overbought levels",
+    "volume below 20\u2011day average"
+  ],
+  "source": "llm",
+  "prompt_version": "1.0.0",
+  "model": "groq/openai/gpt-oss-120b"
+}

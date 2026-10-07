@@ -1,0 +1,14 @@
+yfinance>=0.2.66
+pandas>=2.0
+numpy>=1.26
+python-dateutil>=2.8
+requests>=2.31
+feedparser>=6.0          # RSS news fallback
+pydantic>=2.5            # structured-output validation
+openai>=1.40             # OpenAI-compatible client for Groq / OpenRouter
+python-dotenv>=1.0       # local .env key loading (Colab uses Secrets)
+matplotlib>=3.8
+jinja2>=3.1              # report templating
+pytest>=7.4              # indicator + LLM-validation tests
+# Optional: PDF export of the brief (needs native Pango/Cairo libs)
+# weasyprint>=62

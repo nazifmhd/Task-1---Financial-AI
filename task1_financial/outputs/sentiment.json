@@ -1,0 +1,104 @@
+{
+  "per_headline": [
+    {
+      "headline": "Dan Ives Highlights Nvidia (NVDA) as Top Tech Stock Amid $4T Spe",
+      "sentiment": "positive",
+      "confidence": 0.92,
+      "brief_reason": "Analyst endorsement as top tech stock signals strong demand and likely lifts the share price."
+    },
+    {
+      "headline": "This 1 Quote in Anthropic's IPO Prospectus Should Have AI Investors Buying More Nvidia Stock",
+      "sentiment": "positive",
+      "confidence": 0.92,
+      "brief_reason": "Prospectus praise signals strong demand for Nvidia chips, likely spurring buying pressure on the stock."
+    },
+    {
+      "headline": "Forget Nvidia and AMD, This Under-the-Radar Chip Stock Could Win the AI Semiconductor Race",
+      "sentiment": "negative",
+      "confidence": 0.78,
+      "brief_reason": "Implies a competitor may outpace Nvidia in AI chips, lowering growth expectations for Nvidia."
+    },
+    {
+      "headline": "SpaceX Seeks $40 Billion Financing for Nvidia Chips, FT Reports",
+      "sentiment": "positive",
+      "confidence": 0.86,
+      "brief_reason": "Huge financing request signals strong demand for Nvidia chips, boosting short‑term sales outlook."
+    },
+    {
+      "headline": "Why NVDA, AMD, CRWD Stocks Surged To 52-Week Highs Today",
+      "sentiment": "positive",
+      "confidence": 0.92,
+      "brief_reason": "A 52‑week high indicates strong buying pressure and positive market sentiment toward NVIDIA."
+    },
+    {
+      "headline": "AI Giants Drive Market Rally: Nvidia (NVDA), Microsoft (MSFT), M",
+      "sentiment": "positive",
+      "confidence": 0.73,
+      "brief_reason": "Rally tied to AI demand suggests stronger investor optimism for Nvidia's AI-related growth."
+    },
+    {
+      "headline": "Nvidia Stock Price Target Splits Crypto Punters: Here's Where They See the Chip Giant Going in October",
+      "sentiment": "neutral",
+      "confidence": 0.55,
+      "brief_reason": "Analyst price target divergence signals uncertainty but no clear catalyst for price movement."
+    },
+    {
+      "headline": "Nvidia Hits a New All-Time High. Is the AI Stock a Buy?",
+      "sentiment": "positive",
+      "confidence": 0.75,
+      "brief_reason": "All‑time high signals strong demand and market optimism, likely supporting short‑term price gains."
+    },
+    {
+      "headline": "SpaceX Stock Drops After Hours as Elon Musk-led Company Seeks $40 Billion to Buy Nvidia Chips",
+      "sentiment": "neutral",
+      "confidence": 0.58,
+      "brief_reason": "Main focus is SpaceX’s stock move; Nvidia is only mentioned as a potential buyer, so impact on its share price is unclear."
+    },
+    {
+      "headline": "NVDA Stock Bucks Selloff Premarket On SpaceX Boost, Foxconn’s Sales Update",
+      "sentiment": "positive",
+      "confidence": 0.82,
+      "brief_reason": "Positive demand signals from SpaceX and Foxconn suggest stronger near‑term revenue for NVIDIA."
+    },
+    {
+      "headline": "SpaceX seeks to raise $40 bln to buy Nvidia chips- FT",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "brief_reason": "A $40bn purchase by SpaceX signals strong demand and revenue growth for Nvidia."
+    },
+    {
+      "headline": "SPCX Stock Slips After-Hours As SpaceX Reportedly Seeks $40B For Nvidia Chips",
+      "sentiment": "positive",
+      "confidence": 0.6,
+      "brief_reason": "A $40B chip order from SpaceX indicates strong demand for Nvidia products, likely boosting its short‑term outlook."
+    },
+    {
+      "headline": "Is Nvidia’s (NVDA) Free Cash Flow Keeping Pace With Its Reported Earnings?",
+      "sentiment": "negative",
+      "confidence": 0.45,
+      "brief_reason": "Questioning cash‑flow sustainability may alarm investors and weigh on the share price."
+    },
+    {
+      "headline": "$1000 Invested In NVIDIA 15 Years Ago Would Be Worth This Much Today",
+      "sentiment": "neutral",
+      "confidence": 0.58,
+      "brief_reason": "A retrospective performance piece adds no new fundamentals, so short‑term price impact is minimal."
+    },
+    {
+      "headline": "Nvidia stock flashes massive signal as Wall Street leans in",
+      "sentiment": "positive",
+      "confidence": 0.73,
+      "brief_reason": "Phrase suggests strong investor interest, likely boosting short‑term demand for the stock."
+    }
+  ],
+  "aggregate_score": 0.622,
+  "aggregate_label": "positive",
+  "counts": {
+    "positive": 10,
+    "neutral": 3,
+    "negative": 2
+  },
+  "n_scored": 15,
+  "n_total": 15,
+  "n_failed": 0
+}
