@@ -104,3 +104,40 @@ notebooks 02 and 03 on Colab and reviewed all outputs.
 # SOURCE: Lin, "ROUGE" (2004); Zhang et al., "BERTScore" (2020) https://arxiv.org/abs/1904.09675 - evaluation metrics
 # SOURCE: Zheng et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" (2023) https://arxiv.org/abs/2306.05685 - LLM-as-judge design and self-preference bias caveat
 ```
+
+---
+
+# Task 3 — Agentic Workflows (task3_agentic/)
+
+## AI assistance (Claude Code, claude-opus-5-5, 2026-10-07)
+I set the architecture, following my Task 3 blueprint, and directed the design changes listed in the
+Task 3 README. Claude helped write the code. The notebook was executed end-to-end on live data.
+```
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Config for a LangGraph multi-agent financial research system on Groq free tier', Date: 2026-10-07  -> config.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Tracing decorator writing tool name, inputs, truncated output, duration, agent and run id to JSONL', Date: 2026-10-07  -> src/observability/trace.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Pydantic schemas for DataBrief handoff, clarification request/response and three-section research report', Date: 2026-10-07  -> src/schemas.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'ChatOpenAI factory for Groq with Colab-secret / env key loading', Date: 2026-10-07  -> src/llm.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Five LangChain tools (price data with indicators, news with RSS fallback, volatility, LLM sentiment, DuckDuckGo search) with structured errors, tracing and fault injection', Date: 2026-10-07  -> src/tools.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Pretty-print LangGraph ReAct message streams with action/observation/replan markers', Date: 2026-10-07  -> src/console.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'LangGraph pre_model_hook that compacts old tool observations and enforces a tool-call budget', Date: 2026-10-07  -> src/context.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'LangGraph ReAct research agent with five tools, checkpointer memory and structured three-section report', Date: 2026-10-07  -> src/single_agent.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'LangGraph two-agent pipeline with tool-restricted ReAct agents, Pydantic handoffs, one-round critique loop and handoff trace', Date: 2026-10-07  -> src/multi_agent.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Per-ticker dated JSON cache for research briefs with cache-hit tracing', Date: 2026-10-07  -> src/memory.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Streamlit dashboard for an agent tool-call trace JSONL', Date: 2026-10-07  -> dashboard.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Offline pytest for agent tools, tracing, tool restriction, context hook and cache', Date: 2026-10-07  -> tests/test_offline.py
+# AI-ASSISTED: Claude (claude-opus-5-5), Prompt: 'Generate the Task 3 notebook with nbformat', Date: 2026-10-07  -> build_notebook.py, task3_agentic.ipynb
+# SOURCE: Adapted from task1_financial/src/indicators.py (my Task 1 code in this repository) -> task3_agentic/src/indicators.py
+```
+
+## Models and services used at runtime
+* **Agents:** `openai/gpt-oss-20b` via Groq (free tier).
+* **Sentiment tool:** `openai/gpt-oss-120b` via Groq.
+* **Web search:** DuckDuckGo via the `ddgs` package.
+* **Market data:** yfinance; news from the Yahoo Finance RSS and Google News RSS feeds.
+
+## External references (APIs and patterns; no code copied)
+```
+# SOURCE: LangGraph documentation https://langchain-ai.github.io/langgraph/ - create_react_agent, pre_model_hook, StateGraph conditional edges, MemorySaver checkpointer
+# SOURCE: Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models" (2022) https://arxiv.org/abs/2210.03629 - reason/act/observe loop
+# SOURCE: Streamlit docs https://docs.streamlit.io - st.metric, st.bar_chart, streamlit.testing.v1.AppTest
+```

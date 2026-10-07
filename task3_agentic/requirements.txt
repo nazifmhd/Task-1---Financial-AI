@@ -1,0 +1,16 @@
+# Agent stack (tested together; Python 3.10+)
+langgraph>=0.6,<0.7
+langchain-core>=0.3.69,<0.4
+langchain-openai>=0.3.28,<0.4     # Groq via its OpenAI-compatible endpoint
+openai>=1.40
+pydantic>=2.7
+ddgs>=9.0                          # DuckDuckGo search (successor of duckduckgo-search)
+yfinance>=0.2.66
+feedparser>=6.0
+requests>=2.31
+pandas>=2.0
+numpy>=1.26
+matplotlib>=3.8
+python-dotenv>=1.0
+streamlit>=1.40                    # bonus dashboard
+pytest>=7.4

@@ -22,3 +22,8 @@ Loss is computed on assistant tokens only, with a plain `Trainer` so the mask is
 - The RAG fallback was neutral overall: it fixed some triggers but changed some correct risk flags.
 
 **With more time.** Human-validate a seed set, add risk-rubric examples, try constrained JSON decoding, and calibrate confidence for RAG routing.
+
+## Task 3 — Agentic workflows
+**Decisions.** LangGraph makes replanning and the critique loop explicit graph structure. Tool restriction is structural: each agent is built with only its own tools, and the trace records which agent called what. The critique loop is a genuine data dependency, because the analyst has no news tool and B must supply headlines. A `pre_model_hook` compacts old observations to fit free-tier token limits without losing memory.
+
+**Limitations / next.** Free-tier rate limits make runs slow. Search is flaky, so fallbacks were needed. Report quality depends on the model, and nothing is backtested. Next: OpenTelemetry/LangSmith tracing, a vector-store long-term memory, and human approval before acting on a report.

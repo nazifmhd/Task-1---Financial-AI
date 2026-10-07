@@ -6,7 +6,7 @@ Senior Machine Learning Engineer technical assessment for Ceylon Dazzling Dev Ho
 |---|---|---|---|
 | 1 — Financial AI: LLM-powered equity research assistant | [`task1_financial/`](task1_financial/) | Complete (1A, 1B, bonus report) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task1_financial/task1_equity_research.ipynb) |
 | 2 — Generative AI: QLoRA fine-tuning of Phi-3-mini for compliance clause extraction | [`task2_genai/`](task2_genai/) | Complete (2A, 2B, 2C, RAG bonus). Model: [nazifmhd/phi3-mini-compliance-extractor](https://huggingface.co/nazifmhd/phi3-mini-compliance-extractor) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task2_genai/02_finetune_qlora.ipynb) |
-| 3 — Agentic workflows: multi-agent research | `task3_agentic/` | — | — |
+| 3 — Agentic workflows: LangGraph multi-agent research system with memory and observability | [`task3_agentic/`](task3_agentic/) | Complete (3A, 3B, 3C, Streamlit bonus); trace in [`logs/agent_trace.jsonl`](task3_agentic/logs/agent_trace.jsonl) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task3_agentic/task3_agentic.ipynb) |
 
 * [`CITATIONS.md`](CITATIONS.md) lists all AI assistance and the external sources used.
 * [`REFLECTION.md`](REFLECTION.md) covers architecture decisions, limitations and next steps.
