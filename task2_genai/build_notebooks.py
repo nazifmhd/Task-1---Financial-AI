@@ -18,7 +18,21 @@ def badge(nb_name):
     return f"[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]({BASE}/{nb_name})"
 
 
+def _has_outputs(path) -> bool:
+    import os
+    if not os.path.exists(path):
+        return False
+    old = nbf.read(path, as_version=4)
+    return any(c.cell_type == "code" and c.get("outputs") for c in old.cells)
+
+
 def notebook(cells, path):
+    """Write a notebook - but never overwrite one that holds executed outputs
+    (e.g. the Colab runs of 02/03) unless FORCE_REBUILD=1 is set."""
+    import os
+    if _has_outputs(path) and os.environ.get("FORCE_REBUILD") != "1":
+        print("skip (has executed outputs):", path)
+        return
     nb = nbf.v4.new_notebook(cells=cells, metadata={
         "kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"},
         "language_info": {"name": "python"},
@@ -60,9 +74,10 @@ SETUP_COLAB = f"""
 import os, sys, subprocess
 IN_COLAB = "google.colab" in sys.modules
 if IN_COLAB:
-    if not os.path.exists("{REPO}"):
-        subprocess.run(["git", "clone", "-q", "https://github.com/{GITHUB_USER}/{REPO}.git"], check=True)
-    os.chdir("{REPO}/task2_genai")
+    # Absolute paths: re-running in the same runtime must not clone inside the clone.
+    if not os.path.exists("/content/{REPO}"):
+        subprocess.run(["git", "clone", "-q", "https://github.com/{GITHUB_USER}/{REPO}.git", "/content/{REPO}"], check=True)
+    os.chdir("/content/{REPO}/task2_genai")
     subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", "requirements.txt"], check=True)
 elif os.path.basename(os.getcwd()) != "task2_genai" and os.path.isdir("task2_genai"):
     os.chdir("task2_genai")

@@ -16,6 +16,7 @@ is reported alongside reference-free structured metrics.
 """
 from __future__ import annotations
 
+import json
 import time
 
 import config
@@ -24,21 +25,40 @@ from src.schemas import JudgeVerdict
 
 JUDGE_SYSTEM_PROMPT = (config.PROMPT_DIR / "judge_system_prompt.txt").read_text(encoding="utf-8")
 JUDGE_USER_TMPL = "CLAUSE:\n{clause}\n\nREFERENCE:\n{reference}\n\nCANDIDATE:\n{candidate}"
-JUDGE_CALL_INTERVAL_S = 4.0     # stay inside the free-tier tokens/minute budget
+JUDGE_CALL_INTERVAL_S = 12.0    # ~1.5k tokens/call; stays inside the 8k tokens/min free tier
+CACHE_PATH = config.OUTPUT_DIR / "judge_results.jsonl"
+
+
+def load_cache() -> dict[tuple[str, str], dict]:
+    if not CACHE_PATH.exists():
+        return {}
+    with open(CACHE_PATH, encoding="utf-8") as fh:
+        rows = [json.loads(l) for l in fh if l.strip()]
+    return {(r["model"], r["id"]): r for r in rows if not r.get("judge_error")}
 
 
 def judge_all(rows: list[dict], preds_by_model: dict[str, list[dict]]) -> list[dict]:
-    judge = GroqJSON(config.JUDGE_MODEL, config.JUDGE_TEMPERATURE,
-                     config.JUDGE_REASONING_EFFORT, max_tokens=1500)
+    """Judge every (model, example); resumable via outputs/judge_results.jsonl."""
+    cache = load_cache()
+    judge = None
     out = []
     for model_name, preds in preds_by_model.items():
         by_id = {p["id"]: p for p in preds}
         for r in rows:
+            key = (model_name, r["id"])
+            if key in cache:
+                out.append(cache[key])
+                continue
+            judge = judge or GroqJSON(config.JUDGE_MODEL, config.JUDGE_TEMPERATURE,
+                                      config.JUDGE_REASONING_EFFORT, max_tokens=1500)
             cand = by_id[r["id"]]["raw"] or "(empty output)"
             v = judge.call(JUDGE_SYSTEM_PROMPT, JUDGE_USER_TMPL.format(
                 clause=r["messages"][1]["content"], reference=r["messages"][2]["content"],
                 candidate=cand), JudgeVerdict)
-            out.append({"model": model_name, "id": r["id"],
-                        **(v.model_dump() if v else {"judge_error": True})})
+            rec = {"model": model_name, "id": r["id"],
+                   **(v.model_dump() if v else {"judge_error": True})}
+            out.append(rec)
+            with open(CACHE_PATH, "a", encoding="utf-8") as fh:
+                fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
             time.sleep(JUDGE_CALL_INTERVAL_S)
     return out

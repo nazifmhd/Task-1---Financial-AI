@@ -1,0 +1,125 @@
+{
+  "reviewer_note": "All 24 fine-tuned test outputs reviewed against the CLAUSE (source of truth), with the reference as guidance. Definitions (notebook 01): correct = valid JSON, right clause_type, obligation/party/trigger all supported by the clause; partially_correct = nothing invented but wrong clause_type or risk_flag, a secondary/incomplete obligation, or a missed/confused trigger; hallucinated = states an obligation, party, amount, deadline or condition not present in the clause. Drafted with AI assistance (Claude) and checked by the candidate. Second pass: the two outputs the LLM judge flagged (ex008, ex098) were re-reviewed; ex008 was relabelled hallucinated.",
+  "labels": [
+    {
+      "id": "ex052",
+      "label": "partially_correct",
+      "reason": "Faithful extraction (deadline is in the clause), but risk_flag medium vs reference low."
+    },
+    {
+      "id": "ex072",
+      "label": "partially_correct",
+      "reason": "Primary duty and party correct; omits the breach-notification duty; risk_flag high vs medium."
+    },
+    {
+      "id": "ex214",
+      "label": "partially_correct",
+      "reason": "Labelled aml_kyc instead of compliance_covenant. Defensible (the covenant is about AML procedures) but differs from the taxonomy intent; everything else correct."
+    },
+    {
+      "id": "ex165",
+      "label": "correct",
+      "reason": "Right type, party, trigger and risk; obligation is shorter than the reference but faithful."
+    },
+    {
+      "id": "ex111",
+      "label": "correct",
+      "reason": "All fields supported. Trigger 'receipt of Confidential Information' is a fair reading of 'received from the Insurer' even though the reference uses null."
+    },
+    {
+      "id": "ex000",
+      "label": "correct",
+      "reason": "Matches the reference on every field."
+    },
+    {
+      "id": "ex114",
+      "label": "partially_correct",
+      "reason": "Puts the 30-day quarterly deadline in trigger_condition (a deadline, not a trigger) and drops the recipient (Central Bank of Sri Lanka). Nothing invented."
+    },
+    {
+      "id": "ex024",
+      "label": "partially_correct",
+      "reason": "Correct type/party/trigger; obligation omits the 30-day notice; risk_flag high vs medium."
+    },
+    {
+      "id": "ex231",
+      "label": "correct",
+      "reason": "Right type, party and risk; trigger lists the three breach conditions verbatim from the clause (reference uses null; both defensible)."
+    },
+    {
+      "id": "ex064",
+      "label": "partially_correct",
+      "reason": "Faithful obligation (notify within 5 Business Days, suspension up to 30 days) and trigger; risk_flag medium vs high."
+    },
+    {
+      "id": "ex152",
+      "label": "correct",
+      "reason": "Model says regulatory_reporting; the reference says liability_cap, which is a TEACHER LABEL ERROR (the clause is a duty to provide information to an authority, nothing about liability). Graded against the clause, the model is right."
+    },
+    {
+      "id": "ex098",
+      "label": "partially_correct",
+      "reason": "Type right; party 'Neither Party' is verbatim but semantically odd (reference: 'Each Party'); misses the notification duty; risk_flag high vs medium. The LLM judge flagged this as a hallucination; on re-review it is kept as partially_correct because every element comes from the clause text (a mis-paraphrase, not an invented fact)."
+    },
+    {
+      "id": "ex042",
+      "label": "correct",
+      "reason": "Exact match with the reference."
+    },
+    {
+      "id": "ex077",
+      "label": "partially_correct",
+      "reason": "Faithful; risk_flag medium vs reference low."
+    },
+    {
+      "id": "ex104",
+      "label": "correct",
+      "reason": "All fields supported; trigger null is better than the reference, which mislabels the breach consequence as a trigger."
+    },
+    {
+      "id": "ex008",
+      "label": "hallucinated",
+      "reason": "Attaches 'within the prescribed timeframes' to furnishing copies; in the clause that timeframe governs the regulatory FILINGS, while copies are due 'promptly upon request'. This creates a deadline on a duty that the clause does not impose, so it counts as hallucinated under our definition. (First labelled partially_correct; re-reviewed after the LLM judge flagged it and the label was changed.)"
+    },
+    {
+      "id": "ex164",
+      "label": "correct",
+      "reason": "All fields correct; includes the one-business-day deadline from the clause."
+    },
+    {
+      "id": "ex030",
+      "label": "partially_correct",
+      "reason": "Faithful but drops the scope ('all parties to the trade-finance transaction'); risk_flag medium vs high."
+    },
+    {
+      "id": "ex004",
+      "label": "correct",
+      "reason": "All fields supported; trigger (breach of Sections 4.1, 7.3(b), Schedule B) is verbatim from the clause."
+    },
+    {
+      "id": "ex217",
+      "label": "correct",
+      "reason": "Right type, party, trigger and risk; obligation omits the suspension step but captures the primary duties."
+    },
+    {
+      "id": "ex220",
+      "label": "correct",
+      "reason": "Right type, party, obligation and risk; trigger is a faithful paraphrase."
+    },
+    {
+      "id": "ex088",
+      "label": "partially_correct",
+      "reason": "Faithful extraction; risk_flag high vs medium."
+    },
+    {
+      "id": "ex034",
+      "label": "partially_correct",
+      "reason": "Misses the dispute carve-out that suspends payment; risk_flag medium vs low."
+    },
+    {
+      "id": "ex116",
+      "label": "correct",
+      "reason": "Right type, party, risk; trigger omits the 10-day notification proviso but is supported."
+    }
+  ]
+}

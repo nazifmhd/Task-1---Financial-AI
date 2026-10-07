@@ -5,9 +5,27 @@
 | [`01_generate_dataset.ipynb`](01_generate_dataset.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task2_genai/01_generate_dataset.ipynb) | 2A: problem statement, teacher generation, QC, diversity metrics, chat JSONL, 80/10/10 split | CPU (executed) |
 | [`02_finetune_qlora.ipynb`](02_finetune_qlora.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task2_genai/02_finetune_qlora.ipynb) | 2B: QLoRA (4-bit NF4) training, hyperparameter justification, per-epoch loss, merge, push to the Hub | Colab T4 |
 | [`03_evaluate.ipynb`](03_evaluate.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nazifmhd/Task-1---Financial-AI/blob/main/task2_genai/03_evaluate.ipynb) | 2C: base vs fine-tuned on the held-out test set (ROUGE-L, BERTScore, structured metrics, bootstrap CIs) and the RAG fallback bonus | Colab T4 |
-| `04_judge_and_review.ipynb` | 2C: LLM-as-judge, manual hallucination review, qualitative analysis | CPU |
+| [`04_judge_and_review.ipynb`](04_judge_and_review.ipynb) | 2C: LLM-as-judge, manual hallucination review (all 24 test outputs), qualitative analysis, RAG recap | CPU (executed) |
 
-**Fine-tuned model:** https://huggingface.co/nazifmhd/phi3-mini-compliance-extractor (public, merged fp16 weights)
+**Fine-tuned model:** https://huggingface.co/nazifmhd/phi3-mini-compliance-extractor (public, merged fp16 weights;
+training logs in `training/`, evaluation predictions in `eval/`)
+
+## Results (held-out test set, n = 24; same prompt, quantisation and decoding for both models)
+| Metric | Base Phi-3-mini (system prompt) | QLoRA fine-tuned | Δ (95% paired-bootstrap CI) |
+|---|---|---|---|
+| **ROUGE-L** | 0.633 | **0.778** | +0.145 [+0.094, +0.195] |
+| **BERTScore F1** | 0.905 | **0.967** | +0.062 [+0.054, +0.069] |
+| Schema-valid JSON | 75.0% | **100%** | +25.0 pts |
+| clause_type accuracy | 62.5% | **91.7%** | +29.2 pts |
+| party exact match | 12.5% | **95.8%** | +83.3 pts |
+| obligation-field ROUGE-L | 0.356 | **0.721** | +0.365 |
+| risk_flag accuracy | 45.8% | 62.5% | +16.7 pts (CI includes 0) |
+| **Hallucination rate (manual review, all 24)** | — | **4.2%** (1/24; 12 correct, 11 partially correct) | |
+| LLM-as-judge overall score (1–5) | 3.60 | **4.17** | +0.56 [+0.23, +0.90] |
+| LLM-judge hallucination flag | 16.7% | 8.3% | |
+
+**Validation loss by epoch:** 0.410 → 0.184 → **0.168** → 0.168. The epoch-2 checkpoint was kept and published.
+The LLM-as-judge details and the per-example review table are in notebook 04.
 
 ## Use case
 A model receives one clause from a financial-sector contract or policy (loan agreement, outsourcing
@@ -55,7 +73,8 @@ python smoke_test_cpu.py    # CPU end-to-end smoke test of the GPU code with a t
 ```
 * **Notebook 01:** needs `GROQ_API_KEY` in a git-ignored `.env` file or in Colab Secrets.
 * **Notebooks 02 and 03:** open in Colab with a T4 runtime and the Secret `HF_TOKEN` (write access), then *Run all*.
-* **Notebook 04:** needs `GROQ_API_KEY`.
+* **Notebook 04:** needs `GROQ_API_KEY`. Judge verdicts are cached in `outputs/judge_results.jsonl`.
+* **Rebuilding notebooks:** `build_notebooks.py` will not overwrite a notebook that has executed outputs unless `FORCE_REBUILD=1` is set.
 
 ## Files
 `prompts/teacher_system_prompt.txt` (the full generation prompt, required by the brief) ·
