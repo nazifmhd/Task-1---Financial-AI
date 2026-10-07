@@ -1,0 +1,23 @@
+# Pinned to a combination tested together; Colab's preinstalled versions drift.
+# datasets>=4 pulls huggingface_hub>=1 / transformers>=5, which peft 0.16 cannot import
+# (HybridCache was removed), so the HF stack is pinned as a set.
+transformers==4.53.2
+peft==0.16.0
+accelerate==1.9.0
+bitsandbytes>=0.46.1          # 4-bit NF4 (GPU only)
+datasets==3.6.0
+huggingface_hub==0.33.4
+tokenizers>=0.21,<0.22
+rouge_score==0.1.2
+bert_score==0.3.13
+chromadb>=1.0.15
+sentence-transformers==5.0.0
+scikit-learn>=1.3
+openai>=1.40                  # Groq OpenAI-compatible API (teacher + judge)
+pydantic>=2.5
+python-dotenv>=1.0
+matplotlib>=3.8
+pandas>=2.0
+pytest>=7.4
+# Optional experiment tracking (used only if WANDB_API_KEY is set)
+# wandb

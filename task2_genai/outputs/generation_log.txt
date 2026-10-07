@@ -1,0 +1,9 @@
+2026-10-07 17:13:46,253 INFO calls=10 written=30 failed=0 tokens=15392
+2026-10-07 17:15:45,324 INFO calls=20 written=60 failed=0 tokens=30499
+2026-10-07 17:17:47,077 INFO calls=30 written=90 failed=0 tokens=45313
+2026-10-07 17:19:45,264 INFO calls=40 written=120 failed=0 tokens=59794
+2026-10-07 17:21:44,853 INFO calls=50 written=150 failed=0 tokens=74671
+2026-10-07 17:23:48,678 INFO calls=60 written=180 failed=0 tokens=90218
+2026-10-07 17:25:14,773 WARNING validation failed (attempt 1): Extra data: line 1 column 1037 (char 1036)
+2026-10-07 17:25:53,655 INFO calls=70 written=210 failed=0 tokens=107583
+{'planned': 240, 'already_done': 3, 'calls': 79, 'failed_calls': 0, 'written': 237, 'tokens': 121373}
